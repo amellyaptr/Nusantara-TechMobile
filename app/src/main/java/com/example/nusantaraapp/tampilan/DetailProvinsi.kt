@@ -32,9 +32,9 @@ import com.example.nusantaraapp.data.DummyData
 
 @Composable
 fun DetailProvinsi(makananId: String, rumahAdatId: String) {
-    val makananId = makananId.toIntOrNull() ?: return // Convert string ke int dan pastikan ID valid
+    val makananId = makananId.toIntOrNull() ?: return
     val makanan = DummyData.makananNusantara.find { it.id == makananId }
-    val rumahAdatId = rumahAdatId.toIntOrNull() ?: return // Convert string ke int dan pastikan ID valid
+    val rumahAdatId = rumahAdatId.toIntOrNull() ?: return
     val rumahAdat = DummyData.rumahNusantara.find { it.id == rumahAdatId }
 
     Box(
@@ -48,7 +48,6 @@ fun DetailProvinsi(makananId: String, rumahAdatId: String) {
     ) {
         if (makanan != null && rumahAdat != null) {
             Column(modifier = Modifier.padding(16.dp)) {
-                // Teks di tengah sebelum card gambar
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -67,46 +66,40 @@ fun DetailProvinsi(makananId: String, rumahAdatId: String) {
                     )
                 }
 
-                // Card untuk gambar budaya dan makanan bersama-sama
                 Card(
                     modifier = Modifier
                         .fillMaxWidth(),
                     shape = RoundedCornerShape(12.dp),
                     colors = CardDefaults.cardColors(
-                        containerColor = Color.White // Menggunakan warna dari Color.kt
+                        containerColor = Color.White
                     ),
                     elevation = CardDefaults.elevatedCardElevation(defaultElevation = 4.dp)
                 ) {
                     Column(modifier = Modifier.padding(16.dp)) {
-                        // Menampilkan gambar budaya dan gambar makanan secara berdampingan menggunakan Row
                         Row(
                             modifier = Modifier.fillMaxWidth(),
                             horizontalArrangement = Arrangement.spacedBy(16.dp)
                         ) {
-                            // Gambar Makanan dengan ukuran yang sama dan bentuk persegi
                             Image(
                                 painter = painterResource(id = makanan.imageRes),
                                 contentDescription = "Image of ${makanan.name}",
                                 modifier = Modifier
-                                    .size(160.dp) // Ukuran gambar yang sama
-                                    .aspectRatio(1f) // Membuat gambar menjadi persegi
+                                    .size(160.dp)
+                                    .aspectRatio(1f)
                                     .padding(8.dp)
                             )
-                            // Gambar Budaya dengan ukuran yang sama dan bentuk persegi
                             Image(
                                 painter = painterResource(id = rumahAdat.imageRes),
                                 contentDescription = "Image of ${rumahAdat.name}",
                                 modifier = Modifier
-                                    .size(160.dp) // Ukuran gambar yang sama
-                                    .aspectRatio(1f) // Membuat gambar menjadi persegi
+                                    .size(160.dp)
+                                    .aspectRatio(1f)
                                     .padding(8.dp)
                             )
                         }
 
-                        // Menampilkan informasi teks di bawah gambar
                         Spacer(modifier = Modifier.height(10.dp))
 
-                        // Card untuk informasi teks
                         Card(
                             modifier = Modifier
                                 .fillMaxWidth(),
@@ -123,11 +116,11 @@ fun DetailProvinsi(makananId: String, rumahAdatId: String) {
                                             "dan terdapat Rumah Adat bernama ${rumahAdat.name}.",
                                     style = MaterialTheme.typography.bodyLarge,
                                     fontWeight = FontWeight.SemiBold,
-                                    color = Color.Black,// Membuat teks menjadi bold
+                                    color = Color.Black,
                                     modifier = Modifier
-                                        .fillMaxWidth() // Membuat teks memenuhi lebar
+                                        .fillMaxWidth()
                                         .padding(13.dp),
-                                    textAlign = TextAlign.Justify // Membuat teks rata kiri dan kanan
+                                    textAlign = TextAlign.Justify
                                 )
                             }
                         }
@@ -143,6 +136,5 @@ fun DetailProvinsi(makananId: String, rumahAdatId: String) {
 @Preview(showBackground = true)
 @Composable
 fun DetailProvinsiPreview() {
-    // Preview dengan makananId dan rumahId yang sudah diberikan
     DetailProvinsi(makananId = "1", rumahAdatId = "1")
 }

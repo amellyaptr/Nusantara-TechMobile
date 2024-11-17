@@ -28,7 +28,7 @@ fun RumahAdatItem(
         modifier = modifier
             .fillMaxWidth()
             .clickable {
-                onItemClicked(rumahAdat.id) // Navigasi berdasarkan ID rumah adat
+                onItemClicked(rumahAdat.id)
             }
     ) {
         Image(

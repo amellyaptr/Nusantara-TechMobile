@@ -28,7 +28,7 @@ import com.example.nusantaraapp.data.DummyData
 
 @Composable
 fun DetailMakanan(makananId: String) {
-    val makananId = makananId.toIntOrNull() ?: return // Convert string ke int dan pastikan ID valid
+    val makananId = makananId.toIntOrNull() ?: return
     val makanan = DummyData.makananNusantara.find { it.id == makananId }
 
     Box(
@@ -43,7 +43,6 @@ fun DetailMakanan(makananId: String) {
         if (makanan != null) {
             Column(modifier = Modifier.padding(16.dp)) {
 
-                // Teks "Rumah Adat" di luar Card
                 Text(
                     text = "Makanan Daerah ${makanan.province}",
                     style = MaterialTheme.typography.titleLarge,
@@ -55,10 +54,8 @@ fun DetailMakanan(makananId: String) {
                     textAlign = TextAlign.Center
                 )
 
-                // Spacer untuk menambah jarak antara teks dan gambar
                 Spacer(modifier = Modifier.height(13.dp))
 
-                // Card utama
                 Card(
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(12.dp),
@@ -68,21 +65,18 @@ fun DetailMakanan(makananId: String) {
                     elevation = CardDefaults.elevatedCardElevation(defaultElevation = 4.dp)
                 ) {
                     Column(
-                        modifier = Modifier.padding(16.dp) // Menambahkan padding dalam card utama
+                        modifier = Modifier.padding(16.dp)
                     ) {
-                        // Gambar berada di dalam Card
                         Image(
                             painter = painterResource(id = makanan.imageRes),
                             contentDescription = "Image of ${makanan.name}",
                             modifier = Modifier
                                 .width(800.dp)
-                                .height(200.dp) // Sesuaikan tinggi gambar
+                                .height(200.dp)
                         )
 
-                        // Mengurangi jarak antara gambar dan card deskripsi
                         Spacer(modifier = Modifier.height(6.dp))
 
-                        // Card di dalam Card untuk teks deskripsi
                         Card(
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -93,7 +87,6 @@ fun DetailMakanan(makananId: String) {
                             ),
                             elevation = CardDefaults.elevatedCardElevation(defaultElevation = 2.dp)
                         ) {
-                            // Teks deskripsi
                             Text(
                                 text = "Provinsi ${makanan.province} memiliki makanan khas daerah yang diberi nama ${makanan.name}.",
                                 style = MaterialTheme.typography.bodyLarge,
@@ -117,6 +110,5 @@ fun DetailMakanan(makananId: String) {
 @Preview(showBackground = true)
 @Composable
 fun DetailMakananPreview() {
-    // Preview dengan foodId yang sudah diberikan
     DetailMakanan(makananId = "1")
 }

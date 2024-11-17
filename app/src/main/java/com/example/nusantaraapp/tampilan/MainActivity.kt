@@ -79,13 +79,11 @@ fun NusantaraApp() {
 
     val isSplashScreenVisible = remember { mutableStateOf(true) }
 
-    // Fungsi untuk navigasi dari Splash Screen ke Beranda setelah delay
     LaunchedEffect(Unit) {
-        delay(3000)  // Delay selama 3 detik
+        delay(3000)
         isSplashScreenVisible.value = false
     }
 
-    // Jika Splash Screen masih aktif, tampilkan SplashScreen
     if (isSplashScreenVisible.value) {
         SplashScreen(navController)
     } else {
@@ -190,7 +188,7 @@ fun SplashScreen(navController: NavController) {
         verticalArrangement = Arrangement.Center
     ) {
         Image(
-            painter = painterResource(id = R.drawable.logo), // Pastikan Anda punya gambar logo
+            painter = painterResource(id = R.drawable.logo),
             contentDescription = "Logo",
             modifier = Modifier.size(300.dp)
         )
@@ -222,7 +220,7 @@ fun BottomNavigationBar(
                         painter = painterResource(id = item.iconRes),
                         contentDescription = item.label,
                         modifier = Modifier
-                            .size(24.dp)  // Menyesuaikan ukuran ikon
+                            .size(24.dp)
                             .align(Alignment.CenterVertically)
                     )
                 },
@@ -237,7 +235,7 @@ fun BottomNavigationBar(
                 selected = selectedItem.value == item.screen.route,
                 onClick = {
                     selectedItem.value = item.screen.route
-                    currentScreenTitle.value = item.label // Update judul saat tab diubah
+                    currentScreenTitle.value = item.label
                     navController.navigate(item.screen.route) {
                         launchSingleTop = true
                         restoreState = true

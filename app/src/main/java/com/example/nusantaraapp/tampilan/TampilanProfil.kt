@@ -54,9 +54,9 @@ fun TampilanProfil(navController: NavHostController) {
             ) {
                 Spacer(modifier = Modifier.height(40.dp))
 
-                // Gambar profil
+                // Foto Profil
                 ProfilePicture(
-                    image = painterResource(id = R.drawable.foto), // Ganti dengan resource gambar
+                    image = painterResource(id = R.drawable.foto),
                     modifier = Modifier.size(100.dp)
                 )
 
@@ -72,7 +72,6 @@ fun TampilanProfil(navController: NavHostController) {
 
                 Spacer(modifier = Modifier.height(24.dp))
 
-                // Menu items tanpa onClick
                 ProfileMenuItem(
                     text = "amel.p2004@gmail.com",
                     iconRes = R.drawable.gmail
@@ -119,7 +118,7 @@ fun ProfileMenuItem(text: String, iconRes: Int) {
             contentDescription = null,
             modifier = Modifier
                 .size(30.dp),
-            tint = Color.Unspecified // Menggunakan tint untuk menjaga warna asli ikon
+            tint = Color.Unspecified
         )
         Spacer(modifier = Modifier.width(16.dp))
         Text(

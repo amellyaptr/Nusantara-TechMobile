@@ -5,7 +5,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -27,7 +26,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.nusantaraapp.R
 import com.example.nusantaraapp.tipe.Provinsi
-import com.example.nusantaraapp.ui.theme.CardColor
 import com.example.nusantaraapp.ui.theme.NusantaraAppTheme
 
 @Composable
@@ -42,16 +40,14 @@ fun ProvinsiItem(
             onItemClicked(provinsi.id)
         }
     ) {
-        // Card yang membungkus Image
         Card(
             modifier = Modifier
                 .padding(horizontal = 2.dp, vertical = 2.dp)
-                .size(80.dp), // Ukuran card disesuaikan
+                .size(80.dp),
             shape = RoundedCornerShape(8.dp),
             colors = CardDefaults.cardColors(containerColor = Color.White),
             elevation = CardDefaults.elevatedCardElevation(defaultElevation = 4.dp)
         ) {
-            // Box digunakan untuk memastikan gambar berada di tengah Card
             Box(
                 contentAlignment = Alignment.Center,
                 modifier = Modifier.fillMaxSize()
@@ -61,12 +57,11 @@ fun ProvinsiItem(
                     contentDescription = provinsi.province,
                     modifier = Modifier
                         .clip(CircleShape)
-                        .size(70.dp) // Ukuran lingkaran gambar
+                        .size(70.dp)
                 )
             }
         }
 
-        // Text di luar Card
         Text(
             text = provinsi.province,
             style = MaterialTheme.typography.titleMedium,
@@ -75,7 +70,7 @@ fun ProvinsiItem(
             color = Color.Black,
             modifier = Modifier
                 .width(80.dp)
-                .padding(top = 8.dp), // Tambahkan padding di atas teks
+                .padding(top = 8.dp),
             maxLines = 1
         )
     }

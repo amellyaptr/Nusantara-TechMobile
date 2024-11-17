@@ -27,7 +27,7 @@ import com.example.nusantaraapp.data.DummyData
 
 @Composable
 fun DetailRumahAdat(rumahAdatId: String) {
-    val rumahAdatId = rumahAdatId.toIntOrNull() ?: return // Convert string ke int dan pastikan ID valid
+    val rumahAdatId = rumahAdatId.toIntOrNull() ?: return
     val rumahAdat = DummyData.rumahNusantara.find { it.id == rumahAdatId }
 
     Box(
@@ -42,7 +42,6 @@ fun DetailRumahAdat(rumahAdatId: String) {
         if (rumahAdat != null) {
             Column(modifier = Modifier.padding(16.dp)) {
 
-                // Teks "Rumah Adat" di luar Card
                 Text(
                     text = "Rumah Adat ${rumahAdat.province}",
                     style = MaterialTheme.typography.titleLarge,
@@ -54,10 +53,8 @@ fun DetailRumahAdat(rumahAdatId: String) {
                     textAlign = TextAlign.Center
                 )
 
-                // Spacer untuk menambah jarak antara teks dan gambar
                 Spacer(modifier = Modifier.height(13.dp))
 
-                // Card utama
                 Card(
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(12.dp),
@@ -67,21 +64,18 @@ fun DetailRumahAdat(rumahAdatId: String) {
                     elevation = CardDefaults.elevatedCardElevation(defaultElevation = 4.dp)
                 ) {
                     Column(
-                        modifier = Modifier.padding(16.dp) // Menambahkan padding dalam card utama
+                        modifier = Modifier.padding(16.dp)
                     ) {
-                        // Gambar berada di dalam Card
                         Image(
                             painter = painterResource(id = rumahAdat.imageRes),
                             contentDescription = "Image of ${rumahAdat.name}",
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(200.dp) // Sesuaikan tinggi gambar
+                                .height(200.dp)
                         )
 
-                        // Mengurangi jarak antara gambar dan card deskripsi
                         Spacer(modifier = Modifier.height(2.dp))
 
-                        // Card di dalam Card untuk teks deskripsi
                         Card(
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -92,7 +86,6 @@ fun DetailRumahAdat(rumahAdatId: String) {
                             ),
                             elevation = CardDefaults.elevatedCardElevation(defaultElevation = 2.dp)
                         ) {
-                            // Teks deskripsi
                             Text(
                                 text = "Provinsi ${rumahAdat.province} memiliki Rumah Adat daerah yang diberi nama ${rumahAdat.name}.",
                                 style = MaterialTheme.typography.bodyLarge,
@@ -120,6 +113,5 @@ fun DetailRumahAdat(rumahAdatId: String) {
 @Preview(showBackground = true)
 @Composable
 fun DetailRumahAdatPreview() {
-    // Preview dengan rumahId yang sudah diberikan
     DetailRumahAdat(rumahAdatId = "1")
 }

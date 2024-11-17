@@ -44,7 +44,7 @@ fun TampilanRumahAdat(
     rumahAdat: List<RumahAdat> = DummyData.rumahNusantara
 ) {
     LazyVerticalGrid(
-        columns = GridCells.Adaptive(160.dp), // Lebar card disesuaikan agar lebih proporsional
+        columns = GridCells.Adaptive(160.dp),
         contentPadding = PaddingValues(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp),
         horizontalArrangement = Arrangement.spacedBy(16.dp),
@@ -70,10 +70,10 @@ fun RumahAdatItem(rumahAdat: RumahAdat, onItemClick: (Int) -> Unit) {
             .fillMaxWidth()
             .padding(8.dp)
             .height(195.dp)
-            .clickable { onItemClick(rumahAdat.id) }, // Pindahkan .clickable ke sini
+            .clickable { onItemClick(rumahAdat.id) },
         shape = RoundedCornerShape(12.dp),
         colors = CardDefaults.cardColors(
-            containerColor = CardColor // Menggunakan warna dari Color.kt
+            containerColor = CardColor
         )
     ) {
         Column(
@@ -83,7 +83,7 @@ fun RumahAdatItem(rumahAdat: RumahAdat, onItemClick: (Int) -> Unit) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            // Menyamakan ukuran gambar dan memastikan gambar memenuhi lebar penuh
+
             Image(
                 painter = painterResource(id = rumahAdat.imageRes),
                 contentDescription = rumahAdat.name,
